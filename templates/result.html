@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+        }
+        .result-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        .choices-display {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        .player-choice, .computer-choice {
+            padding: 20px;
+            border-radius: 10px;
+            width: 150px;
+        }
+        .player-choice {
+            background-color: #e3f2fd;
+        }
+        .computer-choice {
+            background-color: #fce4ec;
+        }
+        .choice-icon {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+        .rock-icon {
+            color: #6c757d;
+        }
+        .paper-icon {
+            color: #17a2b8;
+        }
+        .scissors-icon {
+            color: #dc3545;
+        }
+        .result-message {
+            font-size: 24px;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .win {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .lose {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .tie {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        .versus {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .game-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .game-title i {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-title">
+        <i class="fas fa-hand-rock rock-icon"></i>
+        <i class="fas fa-hand-paper paper-icon"></i>
+        <i class="fas fa-hand-scissors scissors-icon"></i>
+        <h1>Rock Paper Scissors</h1>
+    </div>
+    
+    <div class="result-container">
+        <h2>Game Result</h2>
+        
+        <div class="choices-display">
+            <div class="player-choice">
+                <h3>You chose</h3>
+                {% if user_choice == 'rock' %}
+                <i class="fas fa-hand-rock choice-icon rock-icon"></i>
+                {% elif user_choice == 'paper' %}
+                <i class="fas fa-hand-paper choice-icon paper-icon"></i>
+                {% else %}
+                <i class="fas fa-hand-scissors choice-icon scissors-icon"></i>
+                {% endif %}
+                <p>{{ user_choice|capitalize }}</p>
+            </div>
+            
+            <div class="versus">VS</div>
+            
+            <div class="computer-choice">
+                <h3>Computer chose</h3>
+                {% if computer_choice == 'rock' %}
+                <i class="fas fa-hand-rock choice-icon rock-icon"></i>
+                {% elif computer_choice == 'paper' %}
+                <i class="fas fa-hand-paper choice-icon paper-icon"></i>
+                {% else %}
+                <i class="fas fa-hand-scissors choice-icon scissors-icon"></i>
+                {% endif %}
+                <p>{{ computer_choice|capitalize }}</p>
+            </div>
+        </div>
+        
+        <div class="result-message {% if result == 'You win!' %}win{% elif result == 'You lose!' %}lose{% else %}tie{% endif %}">
+            {{ result }}
+        </div>
+        
+        <a href="/"><button>Play Again</button></a>
+    </div>
+</body>
+</html>

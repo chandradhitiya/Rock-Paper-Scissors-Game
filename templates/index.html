@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+        }
+        .game-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        .choices {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .choice {
+            cursor: pointer;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .choice:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: #007bff;
+        }
+        .choice i {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .rock-icon {
+            color: #6c757d;
+        }
+        .paper-icon {
+            color: #17a2b8;
+        }
+        .scissors-icon {
+            color: #dc3545;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .instructions {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #e9f7fe;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .game-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .game-title i {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-title">
+        <i class="fas fa-hand-rock rock-icon"></i>
+        <i class="fas fa-hand-paper paper-icon"></i>
+        <i class="fas fa-hand-scissors scissors-icon"></i>
+        <h1>Rock Paper Scissors</h1>
+    </div>
+    
+    <div class="game-container">
+        <h2>Choose your move:</h2>
+        
+        <form action="/play" method="POST">
+            <div class="choices">
+                <div class="choice">
+                    <i class="fas fa-hand-rock fa-3x rock-icon"></i>
+                    <input type="radio" id="rock" name="choice" value="rock" required>
+                    <label for="rock">Rock</label>
+                </div>
+                
+                <div class="choice">
+                    <i class="fas fa-hand-paper fa-3x paper-icon"></i>
+                    <input type="radio" id="paper" name="choice" value="paper">
+                    <label for="paper">Paper</label>
+                </div>
+                
+                <div class="choice">
+                    <i class="fas fa-hand-scissors fa-3x scissors-icon"></i>
+                    <input type="radio" id="scissors" name="choice" value="scissors">
+                    <label for="scissors">Scissors</label>
+                </div>
+            </div>
+            
+            <button type="submit">Play!</button>
+        </form>
+    </div>
+    
+    <div class="instructions">
+        <h3>Game Rules:</h3>
+        <ul>
+            <li><i class="fas fa-hand-rock"></i> Rock crushes <i class="fas fa-hand-scissors"></i> Scissors</li>
+            <li><i class="fas fa-hand-scissors"></i> Scissors cuts <i class="fas fa-hand-paper"></i> Paper</li>
+            <li><i class="fas fa-hand-paper"></i> Paper covers <i class="fas fa-hand-rock"></i> Rock</li>
+        </ul>
+    </div>
+</body>
+</html>
